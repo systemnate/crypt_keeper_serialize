@@ -1,24 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app is to try to figure out how to encrypt serialized fields using Crypt Keeper.
 
-Things you may want to cover:
+model:
 
-* Ruby version
+```
+class Test < ApplicationRecord
+  crypt_keeper :field1, :field2, encryptor: :postgres_pgp, key: 'super_good_password', salt: 'salt'
+  serialize :field2
+end
+```
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+^ The above does not encrypt `field2` because it is serialized.
